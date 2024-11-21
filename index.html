@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Bem-vindo! / DenuX</title>
+        <style>
+            h1 {
+                font-size: 60px;
+                color: white;
+                text-shadow: 2px 2px 0px black;
+                font-family: Verdana;
+            }
+            button {
+                width: 150px;
+                height: 50px;
+                font-size: 40px;
+                border-radius: 10px;
+                font-family: Verdana;
+                background-color: white;
+            }
+            input {
+                width: 200px;
+                height: 40px;
+                font-size: 25px;
+                font-family: Verdana;
+                border-radius: 10px;
+                text-align: center;
+            }
+            p {
+                font-family: Verdana;
+                color: white;
+                font-size: 15px;
+                text-shadow: 0.5px 1px 0px black;
+            }
+        </style>
+    </head>
+    <body style="background-color: rgb(15, 15, 16); background-image: url(https://c1.wallpaperflare.com/preview/535/212/984/landscape-mist-morning-mountain.jpg); background-size: cover;">
+        <script>
+            // key
+            document.addEventListener("keyup", function(key){
+                if (key.key == "Enter") {
+                    Login()
+                }
+            })
+
+            // functions
+            var password = "123"
+            function Login() {
+                if (document.getElementById("PasswordInput").value == password) {
+                    location.href = "menu.html"
+                } else {
+                    alert("Senha incorreta")
+                }
+            }
+            function Terms1() {
+                alert("TERMOS DE USO: o 'DenuX' pode ser utilizado em qualquer dispositivo e em qualquer navegador por qualquer pessoa. O crédito pelo desenvolvimento não pode ser falsificado, isto é: fingir ser o fundador, desenvolvedor, entre outros.")
+            }
+            function Terms2() {
+                alert("TERMOS DE PRIVACIDADE: cookies podem ser automaticamente adicionados ao seu navegador e dispositivo para o armazenamento de preferências e dados. Nenhuma das suas informações pessoais são coletadas, como: senha.")
+            }
+        </script>
+        <center>
+            <h1>DenuX</h1>
+            <p>Senha: 123</p>
+            <input type="password" placeholder="Senha" id="PasswordInput">
+            <br>
+            <br>
+            <button onclick="Login()">Entrar</button>
+            <br>
+            <br>
+            <p>Esse software pode armazenar cookies;</p>
+            <p>ao entrar você concorda com todos os termos.</p>
+            <button style="width: 150px; height: 25px; font-size: 17px;" onclick="Terms1()">Termos de uso</button>
+            <button style="width: 225px; height: 25px; font-size: 17px;" onclick="Terms2()">Termos de privacidade</button>
+        </center>
+    </body>
+</html>
