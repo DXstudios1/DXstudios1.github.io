@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>DX1's hub</title>
+        <link rel="icon" href="Icons/Forum.png">
+        <style>
+            body {
+                background-image: url(Backgrounds/Background.jpg);
+                background-size: 500px 500px;
+                background-attachment: fixed;
+            }
+            h1 {
+                font-family: LilitaOne;
+                font-size: 50px;
+                margin: 0px;
+                color: white;
+                text-shadow: 1.5px 1.5px 10px gray;
+                -webkit-text-stroke: 2px black;
+            }
+            h2 {
+                font-family: LilitaOne;
+                font-size: 35px;
+                margin: 10px;
+                color: white;
+                text-shadow: 1.5px 1.5px 10px gray;
+                -webkit-text-stroke: 1.5px black;
+            }
+            @font-face {
+                font-family: "LilitaOne";
+                src: url(Fonts/LilitaOne-Regular.ttf);
+            }
+            .TabButton {
+                background-color: none;
+                border: none;
+                border-radius: 10px;
+                width: 250px;
+                height: 250px;
+                cursor: pointer;
+                transition-duration: 0.25s;
+            }
+            .TabButton:hover {
+                transform: scale(1.025);
+                filter: brightness(1.25);
+            }
+            .TabButton:active {
+                transform: scale(0.975);
+            }
+            button {
+                border-radius: 10px;
+                color: white;
+                -webkit-text-stroke: 1.25px black;
+                font-size: 25px;
+                font-family: LilitaOne;
+                transition-duration: 0.25s;
+                cursor: pointer;
+            }
+            button:hover {
+                transform: scale(1.05);
+                filter: brightness(1.1);
+            }
+            button:active {
+                transform: scale(0.95)
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            function Href(HrefValue) {
+                location.href = HrefValue
+            }
+            function ScrollTo(ScrollValue) {
+                scrollTo({top: ScrollValue, behavior: "smooth"})
+            }
+        </script>
+        <center>
+            <br>
+            <h1>DX1's hub</h1>
+            <br>
+            <br>
+            <button onclick="ScrollTo(175)">Games</button>
+            <button onclick="ScrollTo(480)">Social media</button>
+            <br>
+            <br>
+            <br>
+            <h2>Games</h2>
+            <img onclick="Href('https://gd.games/dx_studios1/duckquest')" class="TabButton" src="TabsButtons/DuckQuestDX1sHubTabButton.jpg">
+            <br>
+            <h2>Social media</h2>
+            <img onclick="Href('https://x.com/dx_studios1')" class="TabButton" src="TabsButtons/TwitterDX1sHubTabButton.jpg">
+            <img onclick="Href('https://YouTube.com/c/dx_studios1')" class="TabButton" src="TabsButtons/YouTubeDX1sHubTabButton.jpg">
+        </center>
+    </body>
+</html>
