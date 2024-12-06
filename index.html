@@ -80,9 +80,10 @@
 
             // EVENT DETECTOR
             setTimeout(() => {
-                if (CurrentDate.getDate() < 10) {
+                if (CurrentDate.getDate() < 25) {
                     document.getElementById("EventButton").disabled = true
-                    document.getElementById("EventButton").textContent = "Coming soon: day 10"
+                    const DaysLeftForEvent =  CurrentDate.getDate() - 25
+                    document.getElementById("EventButton").textContent = "Open in: " + Math.abs(DaysLeftForEvent) + "d"
                 }
             })
         </script>
