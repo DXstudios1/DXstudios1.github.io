@@ -40,10 +40,13 @@
             }
             .TabButton:hover {
                 transform: scale(1.025);
-                filter: brightness(1.25);
+                filter: brightness(1.3);
             }
             .TabButton:active {
                 transform: scale(0.975);
+            }
+            .EventButton {
+                background-image: linear-gradient(to right, rgb(255, 0, 0), rgb(208, 0, 0))
             }
             button {
                 border-radius: 10px;
@@ -56,7 +59,7 @@
             }
             button:hover {
                 transform: scale(1.05);
-                filter: brightness(1.1);
+                filter: brightness(1.15);
             }
             button:active {
                 transform: scale(0.95)
@@ -65,16 +68,29 @@
     </head>
     <body>
         <script>
+            const CurrentDate = new Date()
+
+            // FUNCTIONS
             function Href(HrefValue) {
                 location.href = HrefValue
             }
             function ScrollTo(ScrollValue) {
                 scrollTo({top: ScrollValue, behavior: "smooth"})
             }
+
+            // EVENT DETECTOR
+            setTimeout(() => {
+                if (CurrentDate.getDate() < 10) {
+                    document.getElementById("EventButton").disabled = true
+                    document.getElementById("EventButton").textContent = "Coming soon: day 10"
+                }
+            })
         </script>
         <center>
             <br>
             <h1>DX1's hub</h1>
+            <br>
+            <button onclick="Href('christmas.html')" id="EventButton" class="EventButton">Christmas event</button>
             <br>
             <br>
             <button onclick="ScrollTo(175)">Games</button>
