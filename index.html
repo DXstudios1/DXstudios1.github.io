@@ -78,8 +78,6 @@
     </head>
     <body>
         <script>
-            const CurrentDate = new Date()
-
             // FUNCTIONS
             function Href(HrefValue) {
                 location.href = HrefValue
@@ -87,22 +85,10 @@
             function ScrollTo(ScrollValue) {
                 scrollTo({top: ScrollValue, behavior: "smooth"})
             }
-
-            // EVENT DETECTOR
-            setTimeout(() => {
-                if (CurrentDate.getDate() < 25) {
-                    document.getElementById("EventButton").disabled = true
-                    const DaysLeftForEvent =  CurrentDate.getDate() - 25
-                    document.getElementById("EventButton").textContent = "Open in: " + Math.abs(DaysLeftForEvent) + "d"
-                }
-            })
         </script>
         <center>
             <br>
             <h1>DX1's hub</h1>
-            <br>
-            <button onclick="Href('christmas.html')" id="EventButton" class="EventButton">Christmas event</button>
-            <br>
             <br>
             <button onclick="ScrollTo(175)">Games</button>
             <button onclick="ScrollTo(480)">Social media</button>
