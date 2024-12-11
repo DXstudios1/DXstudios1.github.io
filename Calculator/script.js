@@ -25,7 +25,7 @@ function Result() {
 
 // KEY
 document.addEventListener("keyup", function(key){
-  if (key.key == "1" || key.key == "2" || key.key == "3" || key.key == "4" || key.key == "5" || key.key == "6" || key.key == "7" || key.key == "8" || key.key == "9" || key.key == "0" || key.key == "+" || key.key == "-" || key.key == "*" || key.key == "/") {
+  if (key.key == "1" || key.key == "2" || key.key == "3" || key.key == "4" || key.key == "5" || key.key == "6" || key.key == "7" || key.key == "8" || key.key == "9" || key.key == "0" || key.key == "+" || key.key == "-" || key.key == "*" || key.key == "/" || key.key == ".") {
     AddNumber(key.key)
   }
 })
