@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Learning HTML</title>
+    <link rel="stylesheet" href="styles.css"/>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+      <script src="script.js"></script>
+      <center>
+        <h1>🎉 Bem-vindo!</h1>
+        <p>Bem-vindo ao "Learning HTML"! Aqui você aprenderá o básico sobre a criação de websites usando HTML, JAVASCRIPT e CSS!</p>
+        <p class="error">Não se esqueça: tenha determinação! Aprender a programar é uma coisa que leva tempo!</p>
+        <hr>
+        <h2>🧑‍💻 Escolhendo um ambiente de programação</h2>
+        <p>Você irá precisar programar, isso você já sabe, porém... ONDE? Esse é o foco desse capítulo!</p>
+        <p>Para iniciar, você irá precisar do que eu chamo de: "ambiente de programação", que é normalmente um software que facilita muito a sua vida!</p>
+        <p>Nesse caso, recomendo a utilização do Visual Code/VsCode, um software fornecido pela Microsoft que pode ser acessado online!</p>
+        <button onclick="openWebsite('https://vscode.dev/?vscode-lang=pt-br')">VsCode</button>
+        <span>ou</span>
+        <button onclick="openWebsite('https://onecompiler.com')">One compiler</button>
+        <p class="warning">O "One compiler" foi utilizado para a criação do "Learning HTML", ele é basicamente um VsCode que necessita de login e facilita a exportação dos arquivos, porém eu irei comentar sobre o VsCode futuramente</p>
+        <hr>
+        <h2>📁 Os arquivos</h2>
+        <p>Agora as coisas irão ficar mais complexas, mas fica tranquilo, eu vou te ajudar!</p>
+        <p>Para iniciarmos a codificação, você irá criar uma pasta, onde todos os seus códigos ficarão armazenados.</p>
+        <p>Acesse os arquivos do seu computador e crie uma pasta, você pode definir o nome que quiser</p>
+        <p>No VsCode, pressione o botão: "Abrir Pasta" e faça o upload</p>
+        <img src="https://assets.onecompiler.app/432nwmgvh/433b38kg5/Screenshot%202024-12-17%2010.49.36.png">
+        <p class="error">Importante: evite nomear pastas, arquivos e elementos com a tecla "espaço", isso pode causar erros no seu código!</p>
+        <p class="error">Maneira incorreta: "Pasta super legal"</p>
+        <p class="error">Maneira correta: "PastaSuperLegal" ou "Pasta_super_legal"</p>
+        <p>Agora, você irá criar o seu primeiro arquivo de código!</p>
+        <p>Ao fazer upload da sua pasta, esse botão irá aparecer:</p>
+        <img style="width: 70px; height: 70px;" src="https://assets.onecompiler.app/432nwmgvh/433b38kg5/Screenshot%202024-12-17%2010.59.50.png">
+        <p>Você já sabe, né? Pressione ele!</p>
+        <p class="error">Cuidado: você pode nomear sua pasta como quiser, porém você PRECISA adicionar no final do nome o complemento: ".html", isso indica que o arquivo está em HTML</p>
+        <p class="warning">Lembre-se de não utilizar espaços!</p>
+        <p>Pronto! Você já criou os arquvios! Imagem do meu resultado:</p>
+        <img style="width: 400px; height: 200px;" src="https://assets.onecompiler.app/432nwmgvh/433b38kg5/Screenshot%202024-12-17%2011.04.45.png">
+        <hr>
+        <h2>🍀 Boa sorte!</h2>
+        <p>Agora você irá provar os seus conhecimento! Se você quiser.</p>
+        <p class="warning">Essa parte não é obrigatória, porém eu recomendo muito que você teste seus conhecimentos!</p>
+        <p>1-) Onde ficam aramzenados todos os seus arquivos de código?</p>
+        <p>A-) No Visual Code</p>
+        <p>B-) Em um arquivo</p>
+        <p>C-) Em uma pasta</p>
+        <button onclick="changeText(this, 'Alternativa C')">Vizualizar resposta</button>
+        <p>2-) Qual o complemento que é OBRIGATÓRIO ao nomear um arquivo?</p>
+        <p>A-) .index</p>
+        <p>B-) .html</p>
+        <p>C-) .js</p>
+        <button onclick="changeText(this, 'Alternativa B')">Vizualizar resposta</button>
+        <hr>
+        <h2>🙌 Mão na masa!</h2>
+        <p class="error">Essa parte pode ser um pouco complexa, então não se esqueça de revisar e pesquisar!</p>
+        <p class="warning">Dica: atualmente, as IAs são MUITO ÚTEIS no aprendizado, principalmente na programação, porém não se esqueça que elas podem cometer erros!</p>
+        <p>Para começar, eu preciso explicar o que é um script</p>
+        <p>Um "script" é como um roteiro, porém ele não foi feito para um ator, ele foi feito para um computador! Nesse "script", você irá adicionar comandos que irão explicar o que o computador deve fazer!</p>
+        <p class="warning">Script é o código</p>
+        <p>Primeiro, vamos começar com o HTML 5, ele possibilita a exibição de conteúdo na sua página, esse conteúdo pode ser diversas coisas, como: "texto", "botão", "imagem", etc.</p>
+        <p>Esses "coneúdos" são os elementos da sua página!</p>
+        <p>Para definir um elemento, use as setas da esquerda (<) e da direita (>). Para finalizar um elemento, faça a mesma coisa, porém adicione uma barra (/) no meio</p>
+        <p>Exemplo de código:</p>
+        <img style="width: 85px; height: 50px;" src="https://assets.onecompiler.app/432nwmgvh/433b38kg5/Screenshot%202024-12-17%2012.16.54.png">
+        <p>Eu sei, minha explicação foi confusa, porém vamos melhorar o código!</p>
+        <p>Agora iremos utilizar o elemento: "p"</p>
+        <img src="https://assets.onecompiler.app/432nwmgvh/433b38kg5/Screenshot%202024-12-17%2012.19.14.png">
+        <p class="warning">Elementos no Visual Code: ao digitar o começo do elemento, o VsCode completa ele automáticamente para você! O que facilita muito a sua vida!</p>
+        <p class="warning">Elemento "p": ele é um parágrafo/texto</p>
+        <p>Agora precisamos adicionar um texto dentro do elemento! No meu caso, irei adicionar o texto: "Parágrafo super legal :)"</p>
+        <img src="https://assets.onecompiler.app/432nwmgvh/433b38kg5/Screenshot%202024-12-17%2012.23.09.png">
+        <p>Para vizualizar o resutlado, abra os arquivos do seu computador, depois, execute o arquivo disponível dentro da sua pasta (normalmente você pode executar um arquivo clicando duas vezes nele)</p>
+        <img src="https://assets.onecompiler.app/432nwmgvh/433b38kg5/Screenshot%202024-12-17%2012.27.17.png">
+        <p>Parabéns! Você criou o seu primeiro parágrafo, porém ele está na parte superior esquerda da tela e o design também está bem feio... Por enquanto, vamos ignorar isso.</p>
+        <p>Agora vamos adicionar um título no nosso site, para isso, iremos utilizar o elemento "h1":</p>
+        <img src="https://assets.onecompiler.app/432nwmgvh/433b38kg5/Screenshot%202024-12-17%2012.30.26.png">
+        <p class="error">Para ver as alterações realizadas no resultado, dê um "reload" na página (ou pressione CTRL + R)</p>
+        <p>Após o meu "reload", esse foi o resultado:</p>
+        <img src="https://assets.onecompiler.app/432nwmgvh/433b38kg5/Screenshot%202024-12-17%2012.34.21.png">
+        <p class="warning">Dica: quanto maior for o número que fica ao lado do "h", menor será o título</p>
+        <hr>
+        <h2>Preciso do seu feedback!</h2>
+        <p>O "Learning HTML" está sendo útil?</p>
+        <button style="background-color: black; color: white;" onclick="changeText(this, 'Que bom!')">👍</button>
+        <button style="background-color: black; color: white;" onclick="changeText(this, 'Isso não é bom! Me diga como eu posso melhorar no meu Patreon!')">👎</button>
+        <hr>
+        <h2>Isso é tudo por enquanto!</h2>
+        <p>O "Learning HTML" ainda não está finalizado!</p>
+        <a href="https://patreon.com/c/DX_studios1/membership">Ajudar projeto</a>
+        <a href="https://patreon.com/c/DX_studios1">Patreon</a>
+      </center>
+  </body>
+</html>
