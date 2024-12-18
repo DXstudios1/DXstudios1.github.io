@@ -52,3 +52,20 @@ document.addEventListener("keyup", function(key){
     Result()
   }
 })
+document.addEventListener("keyup", function(key){
+  if (key.key == "p" || key.key == "P") {
+    AddNumber("3.14")
+  }
+})
+
+// VERSION FEEDBACK
+function LikeVersion() {
+  document.getElementById("VersionFeedbackAnswer").textContent = "That's good! 🎉"
+  document.getElementById("VersionFeedbackAnswer").style.transitionDuration = "0.25s"
+  document.getElementById("VersionFeedbackAnswer").style.fontSize = "20px"
+}
+function DislikeVersion() {
+  document.getElementById("VersionFeedbackAnswer").textContent = "That isn't good! Can you tell me what you didn't like on my Patreon page?"
+  document.getElementById("VersionFeedbackAnswer").style.transitionDuration = "0.25s"
+  document.getElementById("VersionFeedbackAnswer").style.fontSize = "20px"
+}
