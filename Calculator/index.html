@@ -4,48 +4,61 @@
     <title>Calculator</title>
     <link rel="icon" href="https://assets.onecompiler.app/432nwmgvh/432nws3yf/CalculatorIcon.png">
     <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
   </head>
   <body>
     <script src="script.js"></script>
     <center>
       <p style="font-size: 20px;" id="PreviousCalculatorValue">???</p>
       <p style="margin: 0px;" id="CalculatorValue">?</p>
-      <hr>
       <br>
-      <button onclick="AddNumber(7)">7</button>
-      <button onclick="AddNumber(8)">8</button>
-      <button onclick="AddNumber(9)">9</button>
-      <button onclick="AddNumber('+')" style="background-color: lightBlue;">+</button>
-      <br>
-      <br>
-      <button onclick="AddNumber(4)">4</button>
-      <button onclick="AddNumber(5)">5</button>
-      <button onclick="AddNumber(6)">6</button>
-      <button onclick="AddNumber('-')" style="background-color: lightBlue;">-</button>
+      <button title="7 (7)" onclick="AddNumber(7)">7</button>
+      <button title="8 (8)" onclick="AddNumber(8)">8</button>
+      <button title="9 (9)" onclick="AddNumber(9)">9</button>
+      <button title="+ (+)" onclick="AddNumber('+')" style="background-color: lightBlue;">+</button>
       <br>
       <br>
-      <button onclick="AddNumber(1)">1</button>
-      <button onclick="AddNumber(2)">2</button>
-      <button onclick="AddNumber(3)">3</button>
-      <button onclick="AddNumber('*')" style="background-color: lightBlue;">*</button>
+      <button title="4 (4)" onclick="AddNumber(4)">4</button>
+      <button title="5 (5)" onclick="AddNumber(5)">5</button>
+      <button title="6 (6)" onclick="AddNumber(6)">6</button>
+      <button title="- (-)" onclick="AddNumber('-')" style="background-color: lightBlue;">-</button>
       <br>
       <br>
-      <button onclick="AddNumber('.')">.</button>
-      <button onclick="AddNumber(0)">0</button>
-      <button onclick="Result()" style="background-color: lightGreen;">=</button>
-      <button onclick="AddNumber('/')" style="background-color: lightBlue;">/</button>
+      <button title="1 (1)" onclick="AddNumber(1)">1</button>
+      <button title="2 (2)" onclick="AddNumber(2)">2</button>
+      <button title="3 (3)" onclick="AddNumber(3)">3</button>
+      <button title="* and x are the same (*)" onclick="AddNumber('*')" style="background-color: lightBlue;">*</button>
       <br>
       <br>
-      <button onclick="Clear()" style="font-size: 30px; width: 150px; height: 50px; background-color: coral;">Clear</button>
-      <button onclick="Delete()" style="font-size: 30px; width: 150px; height: 50px; background-color: coral;">Delete</button>
+      <button title=". (.)" onclick="AddNumber('.')">.</button>
+      <button title="0 (0)" onclick="AddNumber(0)">0</button>
+      <button title="= (Enter)" onclick="Result()" style="background-color: lightGreen;">=</button>
+      <button title="/ and ÷ are the same (/)" onclick="AddNumber('/')" style="background-color: lightBlue;">/</button>
       <br>
       <br>
+      <button title="Clear (c)" onclick="Clear()" style="font-size: 30px; width: 150px; height: 50px; background-color: coral;">Clear</button>
+      <button title="Delete (Del/Delete)" onclick="Delete()" style="font-size: 30px; width: 150px; height: 50px; background-color: coral;">Delete</button>
+      <br>
+      <br>
+      <button title="pi = 3.14 (p)" onclick="AddNumber('3.14')" class="SmallButton">𝝅</button>
       <br>
       <br>
       <button onclick="Href('https://patreon.com/c/dx_studios1')" style="font-size: 30px; width: 160px; height: 50px; display: flex; align-items: center;">
         <img src="https://assets.onecompiler.app/432nwmgvh/432nws3yf/Patreon.png" style="width: 30px; height: 30px;">
         Patreon
       </button>
+      <br>
+      <br>
+      <hr>
+      <p style="margin: 1px; font-size: 30px;">Did you like this version?</p>
+      <p style="font-size: 0px;" id="VersionFeedbackAnswer">Version feedback answer</p>
+      <br>
+      <button onclick="LikeVersion()" style="font-size: 25px; width: 50px; height: 50px; background-color: rgb(45, 45, 45);">👍</button>
+      <button onclick="DislikeVersion()" style="font-size: 25px; width: 50px; height: 50px; background-color: rgb(45, 45, 45);">👎</button>
+      <br>
+      <br>
+      <br>
+      <p style="font-size: 20px; margin: 1px;">V1.0.3</p>
     </center>
   </body>
 </html>
