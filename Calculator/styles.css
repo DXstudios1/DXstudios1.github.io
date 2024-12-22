@@ -13,7 +13,12 @@ p {
   color: white;
   font-size: 40px;
 }
-
+a {
+  font-family: Verdana;
+  color: lightblue;
+  font-size: 15px;
+  cursor: pointer;
+}
 span {
   font-family: Verdana;
   color: white;
