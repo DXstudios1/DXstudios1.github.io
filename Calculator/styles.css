@@ -47,3 +47,8 @@ button:active {
   width: 50px !important;
   height: 50px !important;
 }
+.Ad {
+  background-color: black;
+  border-radius: 20px;
+  box-shadow: 0px 0px 0px 1px white;
+}
