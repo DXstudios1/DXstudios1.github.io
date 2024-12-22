@@ -10,6 +10,10 @@ function Href(value) {
   location.href = value
 }
 
+function RemoveParent(element) {
+  element.parentElement.remove()
+}
+
 function Clear() {
   document.getElementById("CalculatorValue").textContent = "?"
   document.getElementById("PreviousCalculatorValue").textContent = "???"
