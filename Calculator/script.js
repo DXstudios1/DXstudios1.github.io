@@ -1,4 +1,3 @@
-// DEFAULT
 function AddNumber(value) {
   if (document.getElementById("CalculatorValue").textContent == "?") {
     document.getElementById("CalculatorValue").textContent = ""
@@ -58,8 +57,11 @@ document.addEventListener("keyup", function(key){
   }
 })
 document.addEventListener("keyup", function(key){
-  if (key.key == "p" || key.key == "P") {
+  if (key.key == "P") {
     AddNumber("3.14")
+  }
+  if (key.key == "I") {
+    AddNumber("Infinity")
   }
 })
 
