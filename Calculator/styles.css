@@ -1,5 +1,13 @@
+@keyframes TypingAnimation {
+  from {transform: translateY(-5px);}
+  to {transform: translateY(5px);}
+}
+.TypingAnimationClass {
+  animation: TypingAnimation 0.4s 1;
+}
+
 body {
-  background-color: rgb(5, 0, 10);
+  background-color: black;
 }
 
 h1 {
