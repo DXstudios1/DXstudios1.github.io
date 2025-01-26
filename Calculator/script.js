@@ -4,6 +4,10 @@ function AddNumber(value) {
   }
   document.getElementById("CalculatorValue").textContent += String(value)
   document.getElementById("PreviousCalculatorValue").textContent = "???"
+  document.getElementById("CalculatorValue").classList.add("TypingAnimationClass")
+  setTimeout(function() {
+      document.getElementById("CalculatorValue").classList.remove("TypingAnimationClass")
+  }, 100);
 }
 
 function Href(value) {
@@ -17,6 +21,10 @@ function RemoveParent(element) {
 function Clear() {
   document.getElementById("CalculatorValue").textContent = "?"
   document.getElementById("PreviousCalculatorValue").textContent = "???"
+  document.getElementById("CalculatorValue").classList.add("TypingAnimationClass")
+  setTimeout(function() {
+      document.getElementById("CalculatorValue").classList.remove("TypingAnimationClass")
+  }, 100);
 }
 
 function Delete() {
@@ -27,12 +35,23 @@ function Delete() {
   if (CurrentText == "") {
     document.getElementById("CalculatorValue").textContent = "?"
   }
+  document.getElementById("CalculatorValue").classList.add("TypingAnimationClass")
+  setTimeout(function() {
+      document.getElementById("CalculatorValue").classList.remove("TypingAnimationClass")
+  }, 100);
 }
 
 function Result() {
   var CurrentString = String(document.getElementById("CalculatorValue").textContent)
   document.getElementById("PreviousCalculatorValue").textContent = CurrentString + "="
   document.getElementById("CalculatorValue").textContent = eval(CurrentString)
+  if (document.getElementById("CalculatorValue").textContent == "NaN") {
+    document.getElementById("CalculatorValue").textContent = "Unknown number :("
+  }
+  document.getElementById("CalculatorValue").classList.add("TypingAnimationClass")
+  setTimeout(function() {
+      document.getElementById("CalculatorValue").classList.remove("TypingAnimationClass")
+  }, 100);
 }
 
 // KEY
