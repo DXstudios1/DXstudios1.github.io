@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Calculator</title>
+    <link rel="icon" href="https://assets.onecompiler.app/432nwmgvh/432nws3yf/CalculatorIcon.png">
+    <meta charset="UTF-8">
+    <style>
+        @keyframes TypingAnimation {
+            from {
+                transform: translateY(-5px);
+            }
+
+            to {
+                transform: translateY(5px);
+            }
+        }
+
+        .TypingAnimationClass {
+            animation: TypingAnimation 0.4s 1;
+        }
+
+        body {
+            background-color: black;
+        }
+
+        h1 {
+            font-family: Verdana;
+            color: white;
+            font-size: 40px;
+        }
+
+        p {
+            font-family: Verdana;
+            color: white;
+            font-size: 40px;
+        }
+
+        a {
+            font-family: Verdana;
+            color: lightblue;
+            font-size: 15px;
+            cursor: pointer;
+            transition-duration: 0.1s;
+        }
+
+        a:hover {
+            color: white;
+            font-size: 16px;
+        }
+
+        a:active {
+            font-size: 14px;
+        }
+
+        span {
+            font-family: Verdana;
+            color: white;
+            font-size: 30px;
+        }
+
+        select {
+            font-size: 30px;
+            border-radius: 10px;
+        }
+
+        button {
+            font-size: 60px;
+            width: 80px;
+            box-shadow: 0px 5px 0px 0px gray;
+            border-radius: 10px;
+            height: 80px;
+            cursor: pointer;
+            font-family: Verdana;
+            border: solid 1px black;
+            transition-duration: 0.05s;
+        }
+
+        button:hover {
+            filter: sepia();
+            transform: scale(1.05);
+        }
+
+        button:active {
+            transition-duration: 0s;
+            box-shadow: 0px 0px 0px 0px gray;
+            transform: translateY(5px);
+        }
+
+        .SmallButton {
+            font-size: 30px !important;
+            width: 50px !important;
+            height: 50px !important;
+        }
+
+        .Ad {
+            background-color: black;
+            border-radius: 20px;
+            box-shadow: 0px 0px 0px 1px white;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <p style="font-size: 20px;" id="PreviousCalculatorValue">???</p>
+        <p style="margin: 0px;" id="CalculatorValue">?</p>
+        <br>
+        <button onclick="AddNumber(7)">7</button>
+        <button onclick="AddNumber(8)">8</button>
+        <button onclick="AddNumber(9)">9</button>
+        <button title="Addition (+)" onclick="AddNumber('+')" style="background-color: lightBlue;">+</button>
+        <br>
+        <br>
+        <button onclick="AddNumber(4)">4</button>
+        <button onclick="AddNumber(5)">5</button>
+        <button onclick="AddNumber(6)">6</button>
+        <button title="Subtraction (-)" onclick="AddNumber('-')" style="background-color: lightBlue;">-</button>
+        <br>
+        <br>
+        <button onclick="AddNumber(1)">1</button>
+        <button onclick="AddNumber(2)">2</button>
+        <button onclick="AddNumber(3)">3</button>
+        <button title="Multiplication (*)" onclick="AddNumber('*')" style="background-color: lightBlue;">x</button>
+        <br>
+        <br>
+        <button onclick="AddNumber('.')">.</button>
+        <button onclick="AddNumber(0)">0</button>
+        <button title="Result (Enter)" onclick="Result()" style="background-color: lightGreen;">=</button>
+        <button title="Division (/)" onclick="AddNumber('/')" style="background-color: lightBlue;">÷</button>
+        <br>
+        <br>
+        <button title="Clear (c)" onclick="Clear()"
+            style="font-size: 30px; width: 150px; height: 50px; background-color: coral;">Clear</button>
+        <button title="Delete (Del)" onclick="Delete()"
+            style="font-size: 30px; width: 150px; height: 50px; background-color: coral;">Delete</button>
+        <br>
+        <br>
+        <button title="Pi (Shift + p)" onclick="AddNumber('3.14')" class="SmallButton">𝝅</button>
+        <button title="Exponentiation (**)" onclick="AddNumber('**')" class="SmallButton">^</button>
+        <button onclick="AddNumber('(')" class="SmallButton">(</button>
+        <button onclick="AddNumber(')')" class="SmallButton">)</button>
+        <button title="Infinity (Shift + i)" onclick="AddNumber('Infinity')" class="SmallButton">∞</button>
+    </center>
+
+    <script>
+        function AddNumber(value) {
+            if (document.getElementById("CalculatorValue").textContent == "?") {
+                document.getElementById("CalculatorValue").textContent = ""
+            }
+            document.getElementById("CalculatorValue").textContent += String(value)
+            document.getElementById("PreviousCalculatorValue").textContent = "???"
+            document.getElementById("CalculatorValue").classList.add("TypingAnimationClass")
+            setTimeout(function () {
+                document.getElementById("CalculatorValue").classList.remove("TypingAnimationClass")
+            }, 100);
+        }
+
+        function Href(value) {
+            location.href = value
+        }
+
+        function RemoveParent(element) {
+            element.parentElement.remove()
+        }
+
+        function Clear() {
+            document.getElementById("CalculatorValue").textContent = "?"
+            document.getElementById("PreviousCalculatorValue").textContent = "???"
+            document.getElementById("CalculatorValue").classList.add("TypingAnimationClass")
+            setTimeout(function () {
+                document.getElementById("CalculatorValue").classList.remove("TypingAnimationClass")
+            }, 100);
+        }
+
+        function Delete() {
+            var CurrentText = document.getElementById("CalculatorValue").textContent
+            document.getElementById("PreviousCalculatorValue").textContent = "???"
+            document.getElementById("CalculatorValue").textContent = CurrentText.slice(0, -1)
+            CurrentText = document.getElementById("CalculatorValue").textContent
+            if (CurrentText == "") {
+                document.getElementById("CalculatorValue").textContent = "?"
+            }
+            document.getElementById("CalculatorValue").classList.add("TypingAnimationClass")
+            setTimeout(function () {
+                document.getElementById("CalculatorValue").classList.remove("TypingAnimationClass")
+            }, 100);
+        }
+
+        function Result() {
+            var CurrentString = String(document.getElementById("CalculatorValue").textContent)
+            document.getElementById("PreviousCalculatorValue").textContent = CurrentString + "="
+            document.getElementById("CalculatorValue").textContent = eval(CurrentString)
+            if (document.getElementById("CalculatorValue").textContent == "NaN") {
+                document.getElementById("CalculatorValue").textContent = "Unknown number :("
+            }
+            document.getElementById("CalculatorValue").classList.add("TypingAnimationClass")
+            setTimeout(function () {
+                document.getElementById("CalculatorValue").classList.remove("TypingAnimationClass")
+            }, 100);
+        }
+
+        // KEY
+        document.addEventListener("keyup", function (key) {
+            if (key.key == "1" || key.key == "2" || key.key == "3" || key.key == "4" || key.key == "5" || key.key == "6" || key.key == "7" || key.key == "8" || key.key == "9" || key.key == "0" || key.key == "+" || key.key == "-" || key.key == "*" || key.key == "/" || key.key == "." || key.key == "(" || key.key == ")") {
+                AddNumber(key.key)
+            }
+        })
+        document.addEventListener("keyup", function (key) {
+            if (key.key == "Backspace") {
+                Delete()
+            }
+        })
+        document.addEventListener("keyup", function (key) {
+            if (key.key == "C" || key.key == "c") {
+                Clear()
+            }
+        })
+        document.addEventListener("keyup", function (key) {
+            if (key.key == "Enter" || key.key == "=") {
+                Result()
+            }
+        })
+        document.addEventListener("keyup", function (key) {
+            if (key.key == "P") {
+                AddNumber("3.14")
+            }
+            if (key.key == "I") {
+                AddNumber("Infinity")
+            }
+        })
+    </script>
+</body>
+
+</html>
