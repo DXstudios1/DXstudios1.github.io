@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title id="PageTitle">Custom tab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <link id="PageIcon" rel="icon" href="">
+    <style>
+      body {
+        background-color: black;
+      }
+      h1 {
+        font-family: "Lexend";
+        color: white;
+      }
+      img {
+        width: auto;
+        height: 150px;
+        filter: invert();
+      }
+      button {
+        font-size: 25px;
+        cursor: pointer;
+        font-family: "Lexend";
+        border: solid 1px gray;
+      }
+      button:hover {
+        opacity: 80%;
+      }
+      .CustomizeTabButton {
+        background: linear-gradient(to right, yellow, orange);
+      }
+    </style>
+  </head>
+  <body>
+    <center>
+      <img src="https://t3.ftcdn.net/jpg/02/97/73/42/360_F_297734214_IbEci8CMShXg0L71F9YRYhJclm7E7LFG.jpg">
+      <h1>Wich website do you want to add?</h1>
+      <button onclick="Start(prompt('Custom URL:'))">Custom</button>
+      <button onclick="Start('https://google.com/search?igu=1')">Google</button>
+    </center>
+    <script>
+      function Start(url) {
+        if (url == null) {
+        } else {
+          document.getElementById("PageTitle").textContent = prompt("Custom tab title")
+          document.getElementById("PageIcon").textContent = prompt("Custom tab icon")
+          document.querySelector("center").remove()
+          const loading = document.createElement("h1")
+          document.body.appendChild(loading)
+          loading.textContent = "Creating iframe..."
+          document.querySelector("html").style.cursor = "progress"
+          const iframe = document.createElement("iframe")
+          iframe.src = url
+          setTimeout(() => {
+            loading.textContent = "Displaying iframe..."
+            document.body.appendChild(iframe)
+            iframe.style.position = "fixed"
+            iframe.style.top = "0px"
+            iframe.style.left = "0px"
+            iframe.style.width = "100%"
+            iframe.style.height = "100%"
+            iframe.style.border = "solid 0px gray"
+          }, Math.random() * 2000)
+        }
+      }
+    </script>
+  </body>
+</html>
