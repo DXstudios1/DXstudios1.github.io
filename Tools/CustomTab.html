@@ -45,7 +45,7 @@
         if (url == null) {
         } else {
           document.getElementById("PageTitle").textContent = prompt("Custom tab title")
-          document.getElementById("PageIcon").textContent = prompt("Custom tab icon")
+          document.getElementById("PageIcon").href = prompt("Custom tab icon")
           document.querySelector("center").remove()
           const loading = document.createElement("h1")
           document.body.appendChild(loading)
