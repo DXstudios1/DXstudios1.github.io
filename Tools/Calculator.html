@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <title>Calculator</title>
     <link rel="icon" href="https://assets.onecompiler.app/432nwmgvh/432nws3yf/CalculatorIcon.png">
     <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Lexend:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <style>
         @keyframes TypingAnimation {
             from {
@@ -25,19 +27,19 @@
         }
 
         h1 {
-            font-family: Verdana;
+            font-family: "Lexend";
             color: white;
             font-size: 40px;
         }
 
         p {
-            font-family: Verdana;
+            font-family: "Lexend";
             color: white;
             font-size: 40px;
         }
 
         a {
-            font-family: Verdana;
+            font-family: "Lexend";
             color: lightblue;
             font-size: 15px;
             cursor: pointer;
@@ -54,7 +56,7 @@
         }
 
         span {
-            font-family: Verdana;
+            font-family: "Lexend";
             color: white;
             font-size: 30px;
         }
@@ -71,7 +73,7 @@
             border-radius: 10px;
             height: 80px;
             cursor: pointer;
-            font-family: Verdana;
+            font-family: "Lexend";
             border: solid 1px black;
             transition-duration: 0.05s;
         }
@@ -100,7 +102,6 @@
         }
     </style>
 </head>
-
 <body>
     <center>
         <p style="font-size: 20px;" id="PreviousCalculatorValue">???</p>
@@ -142,7 +143,6 @@
         <button onclick="AddNumber(')')" class="SmallButton">)</button>
         <button title="Infinity (Shift + i)" onclick="AddNumber('Infinity')" class="SmallButton">∞</button>
     </center>
-
     <script>
         function AddNumber(value) {
             if (document.getElementById("CalculatorValue").textContent == "?") {
