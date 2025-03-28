@@ -6,6 +6,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
     <link id="PageIcon" rel="icon" href="">
+    <meta charset="UTF-8">
     <style>
       body {
         background-color: black;
@@ -14,19 +15,41 @@
         font-family: "Lexend";
         color: white;
       }
+      h2 {
+        font-family: "Lexend";
+        color: white;
+        padding: 0px;
+      }
+      p {
+        color: white;
+        font-family: "Lexend";
+      }
+      a {
+        color: lightblue;
+        font-family: "Lexend";
+        cursor: pointer;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      label {
+        color: white;
+        font-family: "Lexend";
+      }
       img {
         width: auto;
         height: 150px;
-        filter: invert();
       }
       button {
         font-size: 25px;
         cursor: pointer;
         font-family: "Lexend";
-        border: solid 1px gray;
+        border: solid 1px black;
       }
       button:hover {
         opacity: 80%;
+        box-shadow: 0px 0px 0px 1.5px white;
       }
       .CustomizeTabButton {
         background: linear-gradient(to right, yellow, orange);
@@ -35,17 +58,27 @@
   </head>
   <body>
     <center>
-      <img src="https://t3.ftcdn.net/jpg/02/97/73/42/360_F_297734214_IbEci8CMShXg0L71F9YRYhJclm7E7LFG.jpg">
+      <img style="filter: invert()" src="https://t3.ftcdn.net/jpg/02/97/73/42/360_F_297734214_IbEci8CMShXg0L71F9YRYhJclm7E7LFG.jpg">
       <h1>Wich website do you want to add?</h1>
-      <button onclick="Start(prompt('Custom URL:'))">Custom</button>
-      <button onclick="Start('https://google.com/search?igu=1')">Google</button>
+      <button onclick="Start(window.prompt('Custom URL:'))">Custom</button>
+      <button onclick="Start('https://google.com/search?igu=1')">
+        <img style="width: 20px; height: 20px;" src="https://th.bing.com/th/id/OIP.Fll7WPtNT6jrz1oBP8GbCgHaHj?rs=1&pid=ImgDetMain">
+        Google
+      </button>
+      <h2>Tools:</h2>
+      <button onclick="Start('https://dxstudios1.github.io/Tools/Calculator')">Calculator</button>
+      <h2>Others:</h2>
+      <button onclick="Start('https://dxstudios1.github.io/Tools/CustomTab')">Custom tab??</button>
+      <br><br><a onclick='window.open("https://bing.com/search?q=BETA testing phase")'>BETA</a>
+      <label>·</label>
+      <a onclick="window.alert('This tool was created to organize your browser, as you can set a title and an icon (through the image URL) for most websites, including Google.')">About</a>
     </center>
     <script>
       function Start(url) {
         if (url == null) {
         } else {
-          document.getElementById("PageTitle").textContent = prompt("Custom tab title")
-          document.getElementById("PageIcon").href = prompt("Custom tab icon (image address / URL)")
+          document.getElementById("PageTitle").textContent = window.prompt("Custom tab title")
+          document.getElementById("PageIcon").href = window.prompt("Custom tab icon (image address / URL)")
           document.querySelector("center").remove()
           const loading = document.createElement("h1")
           document.body.appendChild(loading)
