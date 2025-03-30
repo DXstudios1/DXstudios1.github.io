@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/c/c9/Windows_Notepad_icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <title>Simple notepad</title>
+    <style>
+      body {
+        background-color: rgb(200, 200, 200);
+      }
+      h1 {
+        font-family: "Lexend";
+        background-color: white;
+        width: 275px;
+      }
+      textarea {
+        font-family: Arial;
+        width: 500px;
+        height: 300px;
+        border: solid 1px gray;
+        outline: none;
+      }
+      button {
+        font-family: "Lexend";
+        cursor: pointer;
+        border: solid 0px black;
+        border: solid 0.5px black;
+        outline: none;
+      }
+      button:hover, button:focus {
+        filter: brightness(1.2);
+        box-shadow: 0px 0px 0px 1px black;
+      }
+      a {
+        font-family: "Lexend";
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      label {
+        font-family: "Lexend";
+      }
+    </style>
+</head>
+<body>
+    <script src="script.js"></script>
+    <center>
+        <h1>Simple notepad</h1>
+        <button title="Change font size" onclick='textarea.style.fontSize = prompt("Font size:", "15") + "px"'>Font size</button>
+        <button title="Change text color" onclick='textarea.style.color = prompt("Color:", "black")'>Color</button>
+        <br><br>
+        <textarea id="textarea"></textarea>
+        <br>
+        <button title="Copy all text" id="CopyButton" onclick="Copy()">Copy</button>
+        <button title="Cut all text" id="CutButton" onclick="Cut()">Cut</button>
+        <br><br><br>
+        <label id="ASStatus" style="color: green;">Auto save enabled</label>
+        <a id="DisableASButton" onclick="DisableAutoSave()">(disable)</a>
+    </center>
+    
+    <script>
+      const textarea = document.getElementById("textarea")
+      const ASStatus = document.getElementById("ASStatus")
+      
+      let AutoSaveEnabled = true
+      
+      setTimeout(() => {
+        textarea.value = localStorage.getItem("Content")
+      }, 200)
+      
+      RandomPlaceholder()
+      function RandomPlaceholder() {
+        let RandomNumb = Math.floor(Math.random() * 3 + 1)
+        if (RandomNumb == 1) {textarea.placeholder = "Write something here..."}
+        if (RandomNumb == 2) {textarea.placeholder = "You can use emojis in this editor..."}
+        if (RandomNumb == 3) {textarea.placeholder = "What are you going to write today?..."}
+      }
+      
+      function Copy() {
+        textarea.select()
+        document.execCommand("copy")
+        document.getElementById("CopyButton").textContent = "✅"
+        setTimeout(() => {
+          document.getElementById("CopyButton").textContent = "Copy"
+        }, 1000)
+      }
+      function Cut() {
+        textarea.select()
+        document.execCommand("cut")
+        document.getElementById("CutButton").textContent = "✅"
+        setTimeout(() => {
+          document.getElementById("CutButton").textContent = "Cut"
+        }, 1000)
+      }
+      
+      function DisableAutoSave() {
+        if (window.confirm("Are you sure?")) {
+          AutoSaveEnabled = false
+          ASStatus.textContent = "Auto save disabled"
+          ASStatus.style.color = "red"
+          document.getElementById("DisableASButton").remove()
+        }
+      }
+      
+      setTimeout(AutoSave, 1000)
+      function AutoSave() {
+        if (AutoSaveEnabled) {
+          setTimeout(AutoSave, 300)
+          localStorage.setItem("Content", textarea.value)
+        }
+      }
+    </script>
+</body>
+</html>
