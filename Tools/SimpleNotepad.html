@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/c/c9/Windows_Notepad_icon.png">
+    <!-- GOOGLE FONTS: -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Lilita+One&display=swap" rel="stylesheet">
+    <!-- END -->
     <title>Simple notepad</title>
     <style>
       body {
@@ -24,6 +26,7 @@
         border: solid 1px gray;
         outline: none;
         max-width: 600px;
+        font-size: 15px;
       }
       button {
         font-family: "Lexend";
@@ -48,6 +51,10 @@
       label {
         font-family: "Lexend";
       }
+      p {
+        font-family: "Lexend";
+        margin: 3px;
+      }
     </style>
 </head>
 <body>
@@ -56,12 +63,15 @@
         <h1>Simple notepad</h1>
         <button title="Change font size" onclick='textarea.style.fontSize = prompt("Font size:", "15") + "px"'>Font size</button>
         <button title="Change text color" onclick='textarea.style.color = prompt("Color:", "black")'>Color</button>
+        <button title="Change background color" onclick='textarea.style.backgroundColor = prompt("Background color:", "white")'>BG color</button>
+        <button title="Change the font family" onclick='textarea.style.fontFamily = prompt("Font family:", "Arial")'>Font</button>
         <br><br>
-        <textarea id="textarea"></textarea>
+        <textarea id="textarea" spellcheck="false"></textarea>
         <br>
         <button title="Copy all text" id="CopyButton" onclick="Copy()">Copy</button>
         <button title="Cut all text" id="CutButton" onclick="Cut()">Cut</button>
-        <br><br><br>
+        <br><br><hr><br>
+        <p id="Length">Text length: 0</p> <br>
         <label id="ASStatus" style="color: green;">Auto save enabled</label>
         <a id="DisableASButton" onclick="DisableAutoSave()">(disable)</a>
     </center>
@@ -78,10 +88,8 @@
       
       RandomPlaceholder()
       function RandomPlaceholder() {
-        let RandomNumb = Math.floor(Math.random() * 3 + 1)
+        let RandomNumb = Math.floor(Math.random() * 1 + 1)
         if (RandomNumb == 1) {textarea.placeholder = "Write something here..."}
-        if (RandomNumb == 2) {textarea.placeholder = "You can use emojis in this editor..."}
-        if (RandomNumb == 3) {textarea.placeholder = "What are you going to write today?..."}
       }
       
       function Copy() {
@@ -110,12 +118,13 @@
         }
       }
       
-      setTimeout(AutoSave, 1000)
-      function AutoSave() {
+      setTimeout(Loop, 1000)
+      function Loop() {
         if (AutoSaveEnabled) {
-          setTimeout(AutoSave, 300)
+          setTimeout(Loop, 300)
           localStorage.setItem("Content", textarea.value)
         }
+        document.getElementById("Length").textContent = "Text length: " + textarea.value.length
       }
     </script>
 </body>
