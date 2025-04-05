@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Button maker</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Lexend:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- END -->
+    <style>
+      body {
+        background: linear-gradient(to bottom right, coral, salmon);
+        height: 100vh;
+      }
+      h1 {
+        font-family: "Lexend";
+      }
+      button {
+        font-family: Arial;
+        cursor: pointer;
+        font-size: 20px;
+        transition-duration: 0.5s;
+      }
+      p {
+        font-family: "Lexend";
+        font-size: 16px;
+      }
+      a {
+        font-family: "Lexend";
+        font-size: 16px;
+        color: blue;
+        cursor: pointer;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      select {
+        font-size: 16px;
+        font-family: "Lexend";
+        cursor: pointer;
+        width: 80px;
+      }
+      label {
+        font-size: 17px;
+        font-family: "Lexend";
+      }
+      .TextInput {
+        font-size: 16px;
+        font-family: "Lexend";
+        width: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="//taplink.cc/id:11201520/widget/" async></script>
+    <center>
+      <h1>Button maker</h1>
+      <button onclick="window.open(document.getElementById('URL').value)" id="Button">Button</button>
+      <br><br><br> <!-- CURSOR -->
+      <label>Cursor:</label>
+      <select id="Cursor">
+        <option value="pointer">Pointer</option> <option value="default">Default</option> <option value="zoom-in">Zoom-in</option> <option value="move">Move</option> <option value="crosshair">Crosshair</option> <option value="grab">Grab</option> <option value="not-allowed">Not allowed</option>
+      </select>
+      <br><br> <!-- TEXT COLOR -->
+      <label>Text color:</label>
+      <select id="TextColor">
+        <option value="black">Black</option>
+        <option value="white">White</option>
+      </select>
+      <br><br> <!-- BG COLOR -->
+      <label>BG color:</label>
+      <select id="BackgroundColor">
+        <option value="white">White</option> <option value="red">Red</option> <option value="blue">Blue</option> <option value="yellow">Yellow</option> <option value="green">Green</option> <option value="linear-gradient(to bottom right, blue, red)">Blue/red</option> <option value="linear-gradient(to bottom right, purple, blue)">Purple/blue</option> <option value="linear-gradient(to bottom right, yellow, orange)">Gold</option>
+      </select>
+      <br><br> <!-- BORDER RADIUS -->
+      <label>Border radius:</label>
+      <select style="width: 50px;" id="BorderRadius">
+        <option value="0px">0px</option>
+        <option value="5px">5px</option>
+        <option value="10px">10px</option>
+        <option value="50px">50px</option>
+      </select>
+      <br><br> <!-- TEXT -->
+      <label>Text:</label>
+      <input value="Button" class="TextInput" type="text" id="Text">
+      <br><br> <!-- URL -->
+      <label>URL:</label>
+      <input value="https://taplink.cc/dx_studios1" class="TextInput" type="text" id="URL">
+      <br><br>
+      <p>Code:</p>
+      <textarea id="Code"></textarea>
+      <br>
+      <a onclick="GenerateCode()">Generate code</a>
+    </center>
+    <script>
+      const Button = document.getElementById("Button")
+      
+      function GenerateCode() {
+      document.getElementById("Code").textContent = `<button onclick="window.open('` + document.getElementById("URL").value + `')"` + ` style="font-size: 20px; cursor: ` + document.getElementById("Cursor").value + "; color: " + document.getElementById("TextColor").value + "; background: " + document.getElementById("BackgroundColor").value + "; border-radius: " + document.getElementById("BorderRadius").value + `;">` + document.getElementById("Text").value + "</button>"
+      }
+      
+      Loop()
+      function Loop() {
+        setTimeout(Loop, 50)
+        Button.style.cursor = document.getElementById("Cursor").value
+        Button.style.background = document.getElementById("BackgroundColor").value
+        Button.style.color = document.getElementById("TextColor").value
+        Button.style.borderRadius = document.getElementById("BorderRadius").value
+        Button.textContent = document.getElementById("Text").value
+      }
+    </script>
+  </body>
+</html>
