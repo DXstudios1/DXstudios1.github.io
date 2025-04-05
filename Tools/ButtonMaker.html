@@ -11,7 +11,7 @@
     <!-- END -->
     <style>
       body {
-        background: linear-gradient(to bottom right, coral, salmon);
+        background: linear-gradient(to bottom right, white, rgb(220, 220, 220));
         height: 100vh;
       }
       h1 {
@@ -30,11 +30,8 @@
       a {
         font-family: "Lexend";
         font-size: 16px;
-        color: blue;
+        color: black;
         cursor: pointer;
-        text-decoration: none;
-      }
-      a:hover {
         text-decoration: underline;
       }
       select {
@@ -67,13 +64,12 @@
       <br><br> <!-- TEXT COLOR -->
       <label>Text color:</label>
       <select id="TextColor">
-        <option value="black">Black</option>
-        <option value="white">White</option>
+        <option value="black">Black</option> <option value="white">White</option> <option value="red">Red</option>
       </select>
       <br><br> <!-- BG COLOR -->
       <label>BG color:</label>
       <select id="BackgroundColor">
-        <option value="white">White</option> <option value="red">Red</option> <option value="blue">Blue</option> <option value="yellow">Yellow</option> <option value="green">Green</option> <option value="linear-gradient(to bottom right, blue, red)">Blue/red</option> <option value="linear-gradient(to bottom right, purple, blue)">Purple/blue</option> <option value="linear-gradient(to bottom right, yellow, orange)">Gold</option>
+        <option value="white">White</option> <option value="black">Black</option> <option value="red">Red</option> <option value="blue">Blue</option> <option value="yellow">Yellow</option> <option value="green">Green</option> <option value="orange">Orange</option> <option value="purple">Purple</option> <option value="coral">Coral</option> <option value="gray">Gray</option> <option value="linear-gradient(to bottom right, blue, red)">Blue/red</option> <option value="linear-gradient(to bottom right, purple, blue)">Purple/blue</option> <option value="linear-gradient(to bottom right, yellow, orange)">Yellow/Orange</option> <option value="linear-gradient(to bottom right, red, black)">Red/black</option>
       </select>
       <br><br> <!-- BORDER RADIUS -->
       <label>Border radius:</label>
