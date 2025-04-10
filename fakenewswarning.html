@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Quiz de educação digital</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Lexend:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- FIM DO GOOGLE FONTS -->
+    <style>
+      @keyframes CoolAnimation {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(10px); }
+        100% { transform: translateY(0px); }
+      }
+      body {
+        height: 100vh;
+        background: url("https://assets.onecompiler.app/432nwmgvh/43dukycuc/FixedAgain.png");
+        background-size: cover;
+      }
+      button {
+        font-size: 25px;
+        font-family: "Jersey 10";
+        cursor: pointer;
+        background-color: #FFD580;
+      }
+      button:hover {
+        filter: brightness(0.75);
+      }
+      h1 {
+        font-family: "Jersey 10";
+        font-weight: normal;
+        font-size: 40px;
+        margin: 0px;
+        cursor: default;
+      }
+      p {
+        font-family: "Jersey 10";
+        font-size: 25px;
+        margin: 0px;
+        cursor: default;
+      }
+    </style>
+  </head>
+  <body>
+      <center>
+        <h1>Sobre o guia:</h1>
+        <p>Esse guia foi feito pelo Gabriel Chucair e pelo Gabriel Fock.</p>
+        <p>Você irá aprender diversos métodos de como saber se algo é verdadeiro na internet.</p>
+        <br>
+        <button style="transition-duration: 0.5s;" onclick="Start()" id="StartButton">Entendi</button>
+        <br><br>
+        <p id="Warning" style="transition-duration: 0.5s; opacity: 0%;">Ao clicar em "iniciar" o guia irá começar</p>
+      </center>
+      <script>
+        const StartButton = document.getElementById("StartButton")
+        const Warning = document.getElementById("Warning")
+
+        let SecondClick = false
+        
+        function Start() {
+          if (SecondClick == false) {
+            StartButton.style.transform = "translateY(40px)"
+            StartButton.textContent = "Iniciar"
+            Warning.style.opacity = "100%"
+            Warning.style.transform = "translateY(-55px)"
+            SecondClick = true
+          } else {
+            location.href = "fakenews.html"
+          }
+        }
+      </script>
+  </body>
+</html>
