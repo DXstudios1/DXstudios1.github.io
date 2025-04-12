@@ -11,13 +11,19 @@
     <!-- END -->
     <title>Simple notepad</title>
     <style>
+      html {
+        scroll-behavior: smooth;
+      }
       body {
-        background-color: rgb(200, 200, 200);
+        background-color: rgb(225, 225, 225);
       }
       h1 {
         font-family: "Lexend";
         background-color: white;
         width: 275px;
+        padding: 2px;
+        border-radius: 5px;
+        cursor: default;
       }
       textarea {
         font-family: Arial;
@@ -27,17 +33,24 @@
         outline: none;
         max-width: 600px;
         font-size: 15px;
+        background-size: 100%;
+        padding: 5px;
+        border-radius: 5px;
+        transition-duration: 0.1s;
       }
       button {
         font-family: "Lexend";
+        background-color: white;
+        padding-top: 3px; padding-bottom: 3px;
+        padding-left: 5px; padding-right: 5px;
+        border-radius: 5px;
+        border: solid 0.5px gray;
+        transition-duration: 0.1s;
         cursor: pointer;
-        border: solid 0px black;
-        border: solid 0.5px black;
-        outline: none;
       }
-      button:hover, button:focus {
-        filter: brightness(1.2);
-        box-shadow: 0px 0px 0px 1px black;
+      button:hover {
+        transform: translateY(-1.5px);
+        filter: brightness(0.9);
       }
       a {
         font-family: "Lexend";
@@ -55,6 +68,9 @@
         font-family: "Lexend";
         margin: 3px;
       }
+      .Gold {
+        background: linear-gradient(to bottom right, yellow, orange) !important;
+      }
     </style>
 </head>
 <body>
@@ -63,8 +79,8 @@
         <h1>Simple notepad</h1>
         <button title="Change font size" onclick='textarea.style.fontSize = prompt("Font size:", "15") + "px"'>Font size</button>
         <button title="Change text color" onclick='textarea.style.color = prompt("Color:", "black")'>Color</button>
-        <button title="Change background color" onclick='textarea.style.backgroundColor = prompt("Background color:", "white")'>BG color</button>
-        <button title="Change the font family" onclick='textarea.style.fontFamily = prompt("Font family:", "Arial")'>Font</button>
+        <button title="Change background" onclick='textarea.style.background = prompt("Background color:", "white")'>Background</button>
+        <button title="Change font family" onclick='textarea.style.fontFamily = prompt("Font family:", "Arial")'>Font</button>
         <br><br>
         <textarea id="textarea" spellcheck="false"></textarea>
         <br>
