@@ -11,7 +11,7 @@
     <!-- END -->
     <style>
       body {
-        background: linear-gradient(to bottom right, white, rgb(220, 220, 220));
+        background: #D3D3D9;
         height: 100vh;
       }
       h1 {
@@ -22,6 +22,7 @@
         cursor: pointer;
         font-size: 20px;
         transition-duration: 0.5s;
+        border: solid 1px black;
       }
       p {
         font-family: "Lexend";
@@ -49,6 +50,9 @@
         font-family: "Lexend";
         width: 100px;
       }
+      .ColorInput {
+        cursor: pointer;
+      }
     </style>
   </head>
   <body>
@@ -62,22 +66,32 @@
         <option value="pointer">Pointer</option> <option value="default">Default</option> <option value="zoom-in">Zoom-in</option> <option value="move">Move</option> <option value="crosshair">Crosshair</option> <option value="grab">Grab</option> <option value="not-allowed">Not allowed</option>
       </select>
       <br><br> <!-- TEXT COLOR -->
-      <label>Text color:</label>
-      <select id="TextColor">
-        <option value="black">Black</option> <option value="white">White</option> <option value="red">Red</option>
-      </select>
+      <label>Main color:</label>
+      <input type="color" id="TextColor" class="ColorInput">
       <br><br> <!-- BG COLOR -->
-      <label>BG color:</label>
-      <select id="BackgroundColor">
-        <option value="white">White</option> <option value="black">Black</option> <option value="red">Red</option> <option value="blue">Blue</option> <option value="yellow">Yellow</option> <option value="green">Green</option> <option value="orange">Orange</option> <option value="purple">Purple</option> <option value="coral">Coral</option> <option value="gray">Gray</option> <option value="linear-gradient(to bottom right, blue, red)">Blue/red</option> <option value="linear-gradient(to bottom right, purple, blue)">Purple/blue</option> <option value="linear-gradient(to bottom right, yellow, orange)">Yellow/Orange</option> <option value="linear-gradient(to bottom right, red, black)">Red/black</option>
-      </select>
+      <label>Bg color:</label>
+      <input id="BackgroundColor" type="color" value="#FFFFFF" class="ColorInput">
       <br><br> <!-- BORDER RADIUS -->
       <label>Border radius:</label>
-      <select style="width: 50px;" id="BorderRadius">
-        <option value="0px">0px</option>
+      <select style="width: 60px;" id="BorderRadius">
+        <optgroup label="Pixels">
+          <option value="0px">0px</option> <option value="5px">5px</option>  <option value="10px">10px</option> <option value="15px">15px</option> <option value="20px">20px</option>
+        </optgroup>
+        <optgroup label="Special">
+          <option value="100%">Eye</option>
+        </optgroup>
+      </select>
+      <br><br> <!-- SIZE -->
+      <label>Size:</label>
+      <select id="FontSize" style="width: 60px;">
+        <option value="20px">20px</option> <option value="25px">25px</option> <option value="30px">30px</option> <option value="50px">50px</option> <option value="100px">100px</option>
+      </select>
+      <br><br> <!-- PADDING -->
+      <label>Padding:</label>
+      <select id="Padding" style="width: 60px;">
+        <option value="3px">3px</option>
         <option value="5px">5px</option>
         <option value="10px">10px</option>
-        <option value="50px">50px</option>
       </select>
       <br><br> <!-- TEXT -->
       <label>Text:</label>
@@ -87,15 +101,25 @@
       <input value="https://taplink.cc/dx_studios1" class="TextInput" type="text" id="URL">
       <br><br>
       <p>Code:</p>
-      <textarea id="Code"></textarea>
+      <textarea id="Code" readonly></textarea>
       <br>
       <a onclick="GenerateCode()">Generate code</a>
+      <label>/</label>
+      <a onclick="CopyCode()">Copy code</a>
+      <br><br>
+      <p>More options:</p>
+      <label>Bg color:</label>
+      <input type="color" class="ColorInput" value="#D3D3D9" id="MoreOptions_BackgroundColor">
     </center>
     <script>
       const Button = document.getElementById("Button")
       
       function GenerateCode() {
-      document.getElementById("Code").textContent = `<button onclick="window.open('` + document.getElementById("URL").value + `')"` + ` style="font-size: 20px; cursor: ` + document.getElementById("Cursor").value + "; color: " + document.getElementById("TextColor").value + "; background: " + document.getElementById("BackgroundColor").value + "; border-radius: " + document.getElementById("BorderRadius").value + `;">` + document.getElementById("Text").value + "</button>"
+      document.getElementById("Code").textContent = "<button onclick='window.open(`" + document.getElementById("URL").value + "`)' style='font-size: " + document.getElementById("FontSize").value + "; cursor: " + document.getElementById("Cursor").value + "; color: " + document.getElementById("TextColor").value + "; background: " + document.getElementById("BackgroundColor").value + "; border-radius: " + document.getElementById("BorderRadius").value + "; padding: " + document.getElementById("Padding").value + "; border: solid 1px " + document.getElementById("TextColor").value + ";'>" + document.getElementById("Text").value + "</button>"
+      }
+      function CopyCode() {
+        document.getElementById("Code").select()
+        document.execCommand("copy")
       }
       
       Loop()
@@ -104,8 +128,13 @@
         Button.style.cursor = document.getElementById("Cursor").value
         Button.style.background = document.getElementById("BackgroundColor").value
         Button.style.color = document.getElementById("TextColor").value
+        Button.style.border = "solid 1px " + document.getElementById("TextColor").value
         Button.style.borderRadius = document.getElementById("BorderRadius").value
+        Button.style.fontSize = document.getElementById("FontSize").value
+        Button.style.padding = document.getElementById("Padding").value
         Button.textContent = document.getElementById("Text").value
+        
+        document.querySelector("body").style.backgroundColor = document.getElementById("MoreOptions_BackgroundColor").value
       }
     </script>
   </body>
