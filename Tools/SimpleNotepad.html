@@ -31,7 +31,7 @@
         height: 300px;
         border: solid 1px gray;
         outline: none;
-        max-width: 600px;
+        max-width: 90%;
         font-size: 15px;
         background-size: 100%;
         padding: 5px;
@@ -131,6 +131,14 @@
           ASStatus.textContent = "Auto save disabled"
           ASStatus.style.color = "red"
           document.getElementById("DisableASButton").remove()
+        }
+      }
+      
+      VerifyParam()
+      function VerifyParam() {
+        const Params = new URLSearchParams(window.location.search)
+        if (!Params.get("text") == null) {
+          textarea.textContent = Params.get("text")
         }
       }
       
