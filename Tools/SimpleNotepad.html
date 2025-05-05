@@ -1,155 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/c/c9/Windows_Notepad_icon.png">
-    <!-- GOOGLE FONTS: -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Lilita+One&display=swap" rel="stylesheet">
-    <!-- END -->
-    <title>Simple notepad</title>
-    <style>
-      html {
-        scroll-behavior: smooth;
-      }
-      body {
-        background-color: rgb(225, 225, 225);
-      }
-      h1 {
-        font-family: "Lexend";
-        background-color: white;
-        width: 275px;
-        padding: 2px;
-        border-radius: 5px;
-        cursor: default;
-      }
-      textarea {
-        font-family: Arial;
-        width: 75%;
-        height: 300px;
-        border: solid 1px gray;
-        outline: none;
-        max-width: 90%;
-        font-size: 15px;
-        background-size: 100%;
-        padding: 5px;
-        border-radius: 5px;
-        transition-duration: 0.1s;
-      }
-      button {
-        font-family: "Lexend";
-        background-color: white;
-        padding-top: 3px; padding-bottom: 3px;
-        padding-left: 5px; padding-right: 5px;
-        border-radius: 5px;
-        border: solid 0.5px gray;
-        transition-duration: 0.1s;
-        cursor: pointer;
-      }
-      button:hover {
-        transform: translateY(-1.5px);
-        filter: brightness(0.9);
-      }
-      a {
-        font-family: "Lexend";
-        color: black;
-        text-decoration: none;
-        cursor: pointer;
-      }
-      a:hover {
-        text-decoration: underline;
-      }
-      label {
-        font-family: "Lexend";
-      }
-      p {
-        font-family: "Lexend";
-        margin: 3px;
-      }
-      .Gold {
-        background: linear-gradient(to bottom right, yellow, orange) !important;
-      }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/c/c9/Windows_Notepad_icon.png" />
+  <!-- GOOGLE FONTS: -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Lilita+One&display=swap" rel="stylesheet" />
+  <!-- END -->
+  <title>Simple notepad</title>
+  <style>
+    html {
+      scroll-behavior: smooth;
+      transition-duration: 0.1s;
+    }
+    body {
+      background-color: rgb(225, 225, 225);
+    }
+    h1 {
+      font-family: "Lexend";
+      font-size: 15px;
+      cursor: default;
+    }
+    .TopBar {
+      display: flex;
+      height: 30px;
+      gap: 5px;
+    }
+    .TopBar button {
+      font-size: 12px;
+      padding: 2.5px;
+    }
+    #textarea {
+      font-family: "Lexend";
+      width: 97.5%;
+      height: 500px;
+      border: solid 1px gray;
+      border: none;
+      outline: none;
+      font-size: 15px;
+      background-color: white;
+      text-align: left;
+      padding: 5px;
+      border-radius: 4px;
+      transition-duration: 0.1s;
+      overflow-y: auto;
+      resize: vertical;
+    }
+    #textarea img {
+      max-width: 200px; max-height: 200px;
+    }
+    button {
+      font-family: "Lexend";
+      background-color: white;
+      padding: 3px 5px;
+      border-radius: 4px;
+      margin-top: 5px;
+      border: none;
+      transition-duration: 0.1s;
+      cursor: pointer;
+    }
+    button:hover {
+      transform: scale(0.975);
+      filter: brightness(0.8);
+    }
+    button:active {
+      transition-duration: 0s;
+      transform: scale(0.9);
+      filter: brightness(0.75);
+    }
+    a {
+      font-family: "Lexend";
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    label, p {
+      font-family: "Lexend";
+      margin: 2px;
+    }
+    .Gold {
+      background: linear-gradient(to bottom right, yellow, orange) !important;
+    }
+    .PlayButton {
+      width: 35px; height: 35px;
+      font-size: 17.5px;
+    }
+  </style>
 </head>
 <body>
-    <script src="//taplink.cc/id:11201520/widget/" async></script>
-    <center>
-        <h1>Simple notepad</h1>
-        <button title="Change font size" onclick='textarea.style.fontSize = prompt("Font size:", "15") + "px"'>Font size</button>
-        <button title="Change text color" onclick='textarea.style.color = prompt("Color:", "black")'>Color</button>
-        <button title="Change background" onclick='textarea.style.background = prompt("Background color:", "white")'>Background</button>
-        <button title="Change font family" onclick='textarea.style.fontFamily = prompt("Font family:", "Arial")'>Font</button>
-        <br><br>
-        <textarea id="textarea" spellcheck="false"></textarea>
-        <br>
-        <button title="Copy all text" id="CopyButton" onclick="Copy()">Copy</button>
-        <button title="Cut all text" id="CutButton" onclick="Cut()">Cut</button>
-        <br><br><hr><br>
-        <p id="Length">Text length: 0</p> <br>
-        <label id="ASStatus" style="color: green;">Auto save enabled</label>
-        <a id="DisableASButton" onclick="DisableAutoSave()">(disable)</a>
-    </center>
+  <div class="TopBar">
+    <h1>Simple notepad</h1>
+    <button onclick="DarkModeButton(this)">Dark mode (BETA)</button> 
+  </div>
+  <center>
+    <label>Add:</label>
+    <button onclick="document.execCommand('insertImage', false, window.prompt('Image address / URL'))">Image</button>
+    <label>|</label>
+    <button onclick="document.execCommand('insertHTML', false, '<hr>')">Horizontal line</button>
+    <label>|</label>
+    <button onclick="document.execCommand('insertUnorderedList')">Default list</button>
+    <button onclick="document.execCommand('insertOrderedList')">Number list</button>
+    <br>
+    <label>Text:</label>
+    <button onclick="document.execCommand('fontSize', false, window.prompt('Font size:', '3'))">Size</button>
+    <button onclick="document.execCommand('foreColor', false, window.prompt('Color:', 'black'))">Color</button>
+    <label>|</label>
+    <button onclick="document.execCommand('bold')">Bold</button>
+    <button onclick="document.execCommand('italic')">Italic</button>
+    <button onclick="document.execCommand('underline')">Underline</button>
+    <label>|</label>
+    <button onclick="document.execCommand('justifyLeft')">Left</button>
+    <button onclick="document.execCommand('justifyCenter')">Center</button>
+    <button onclick="document.execCommand('justifyRight')">Right</button>
+    <br><br>
+    <div id="textarea" contenteditable="true" spellcheck="false"></div>
+    <button title="Copy all text" id="CopyButton" onclick="Copy()">Copy</button>
+    <button title="Cut all text" id="CutButton" onclick="Cut()">Cut</button>
+    <br>
+    <br><hr><br>
+    <p id="Length">Text length: 0</p> <br>
+    <label id="ASStatus" style="color: green;">Auto save enabled</label>
+    <a id="DisableASButton" onclick="DisableAutoSave()">(disable)</a>
+  </center>
+  <script>
+    const textarea = document.getElementById("textarea");
+    const ASStatus = document.getElementById("ASStatus");
+
+    let AutoSaveEnabled = true;
     
-    <script>
-      const textarea = document.getElementById("textarea")
-      const ASStatus = document.getElementById("ASStatus")
-      
-      let AutoSaveEnabled = true
-      
+    let DarkMode = false;
+
+    setTimeout(() => {
+      textarea.innerHTML = localStorage.getItem("Content") || "";
+    }, 200);
+
+    function Copy() {
+      const selection = window.getSelection();
+      const range = document.createRange();
+      range.selectNodeContents(textarea);
+      selection.removeAllRanges();
+      selection.addRange(range);
+      document.execCommand("copy");
+      document.getElementById("CopyButton").textContent = "✅";
       setTimeout(() => {
-        textarea.value = localStorage.getItem("Content")
-      }, 200)
-      
-      RandomPlaceholder()
-      function RandomPlaceholder() {
-        let RandomNumb = Math.floor(Math.random() * 1 + 1)
-        if (RandomNumb == 1) {textarea.placeholder = "Write something here..."}
+        document.getElementById("CopyButton").textContent = "Copy";
+      }, 1000);
+    }
+
+    function Cut() {
+      const selection = window.getSelection();
+      const range = document.createRange();
+      range.selectNodeContents(textarea);
+      selection.removeAllRanges();
+      selection.addRange(range);
+      document.execCommand("cut");
+      document.getElementById("CutButton").textContent = "✅";
+      setTimeout(() => {
+        document.getElementById("CutButton").textContent = "Cut";
+      }, 1000);
+    }
+    
+    function DarkModeButton(element) {
+      if (DarkMode == true) {
+        DarkMode = false
+        element.textContent = "Dark mode (BETA)"
+        document.querySelector("html").style.filter = "invert(0)"
+      } else {
+        DarkMode = true
+        element.textContent = "Light mode"
+        document.querySelector("html").style.filter = "invert(0.9)"
       }
-      
-      function Copy() {
-        textarea.select()
-        document.execCommand("copy")
-        document.getElementById("CopyButton").textContent = "✅"
-        setTimeout(() => {
-          document.getElementById("CopyButton").textContent = "Copy"
-        }, 1000)
+    }
+
+    function DisableAutoSave() {
+      if (window.confirm("Are you sure?")) {
+        AutoSaveEnabled = false;
+        ASStatus.textContent = "Auto save disabled";
+        ASStatus.style.color = "red";
+        document.getElementById("DisableASButton").remove();
       }
-      function Cut() {
-        textarea.select()
-        document.execCommand("cut")
-        document.getElementById("CutButton").textContent = "✅"
-        setTimeout(() => {
-          document.getElementById("CutButton").textContent = "Cut"
-        }, 1000)
+    }
+
+    function Loop() {
+      if (AutoSaveEnabled) {
+        setTimeout(Loop, 300);
+        localStorage.setItem("Content", textarea.innerHTML);
       }
-      
-      function DisableAutoSave() {
-        if (window.confirm("Are you sure?")) {
-          AutoSaveEnabled = false
-          ASStatus.textContent = "Auto save disabled"
-          ASStatus.style.color = "red"
-          document.getElementById("DisableASButton").remove()
-        }
-      }
-      
-      VerifyParam()
-      function VerifyParam() {
-        const Params = new URLSearchParams(window.location.search)
-        if (!Params.get("text") == null) {
-          textarea.textContent = Params.get("text")
-        }
-      }
-      
-      setTimeout(Loop, 1000)
-      function Loop() {
-        if (AutoSaveEnabled) {
-          setTimeout(Loop, 300)
-          localStorage.setItem("Content", textarea.value)
-        }
-        document.getElementById("Length").textContent = "Text length: " + textarea.value.length
-      }
-    </script>
+      document.getElementById("Length").textContent = "Text length: " + textarea.innerText.length;
+    }
+
+    setTimeout(Loop, 1000);
+  </script>
 </body>
 </html>
