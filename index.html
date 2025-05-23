@@ -121,6 +121,7 @@
         //// Edit
         // Load
         $(document).ready(function() {
+          $(".SearchInput").focus()
           $(".Title").html(localStorage.getItem("TitleContent") || "DenuX")
           $("title").text($(".Title").text())
           
