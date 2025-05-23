@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DenuX</title>
+    <meta charset="UTF-8">
+    <!-- Full jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <!---->
+    <style>
+      body {
+        background: url("https://img.freepik.com/free-vector/purple-neon-lined-pattern-dark-background-vector_53876-173959.jpg?semt=ais_hybrid&w=740");
+        background-color: black;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 100vh;
+        overflow: hidden;
+      }
+      h1 {
+        font-size: 50px;
+        font-family: Arial;
+        margin: 20px;
+        color: white;
+      }
+      h1[contenteditable] {
+        cursor: pointer;
+        text-shadow: 0 0 20px black;
+      }
+      h1[contenteditable]:focus {
+        cursor: text;
+      }
+      p, label {
+        font-family: Arial;
+        font-size: 20px;
+      }
+      button {
+        cursor: pointer;
+        font-size: 20px;
+        padding: 7.5px 15px;
+        border-radius: 100px;
+        border: none;
+        background-color: white;
+        transition-duration: 0.1s;
+        filter: brightness(0.95);
+      }
+      button span {
+        transform: scale(1.225);
+        margin-right: 5px;
+      }
+      button:hover {
+        filter: brightness(0.8);
+      }
+      button:active {
+        transition-duration: 0s;
+        transform: scale(0.95);
+      }
+      .CenterDiv {
+        position: fixed;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .BottomRightDiv {
+        position: fixed;
+        bottom: 15px; right: 15px;
+      }
+      .SearchInput {
+        width: 750px;
+        font-size: 25px;
+        padding: 15px;
+        border-radius: 100px;
+        border: none;
+        transition-duration: 0.1s;
+        outline: none;
+      }
+    </style>
+  </head>
+  <body>
+      <div class="CenterDiv">
+        <center>
+          <h1 class="Title" style="outline: none;" contenteditable spellcheck="false">DenuX</h1>
+          <input type="search" class="SearchInput" placeholder="Type something here">
+          <br><br>
+          <button onclick="Search()">Search</button>
+        </center>
+      </div>
+      
+      <div class="BottomRightDiv">
+        <button onclick="Edit()"><span class="ui-icon ui-icon-pencil"></span>Edit</button>
+      </div>
+      
+      <div title="Edit" style="display: none;" class="EditDiv">
+        <center>
+          <label>BG:</label>
+          <input class="Edit-BG" type="url" value="https://img.freepik.com/free-vector/purple-neon-lined-pattern-dark-background-vector_53876-173959.jpg?semt=ais_hybrid&w=740">
+          <br><br>
+          <button onclick="SaveEdit()">Save changes</button>
+        </center>
+      </div>
+      
+      <script>
+        $(document).tooltip({
+          track: true,
+          position: {
+            my: "left+15 top+25",
+            at: "top left"
+          },
+          show: {
+            delay: 400
+          }
+        })
+        
+        function Search() {
+          location.href = "https://google.com/search?igu=1&q=" + $(".SearchInput").val()
+        }
+        $(".SearchInput").on("keyup", function(key) {
+          if (key.key == "Enter") { Search() }
+        })
+        
+        //// Edit
+        // Load
+        $(document).ready(function() {
+          $(".Title").html(localStorage.getItem("TitleContent") || "DenuX")
+          $("title").text($(".Title").text())
+          
+          $("body").css("background", localStorage.getItem("Edit-BG"))
+          $("body").css({
+            "background-size": "cover",
+            "background-repeat": "no-repeat",
+            "background-position": "center"
+          })
+        })
+        
+        // Title
+        $(".Title").blur(function() {
+          localStorage.setItem("TitleContent", $(".Title").html())
+          $("title").text($(".Title").text())
+        })
+        $(".Title").on("keydown", function(key){
+          if (key.key === "Enter") {
+            key.preventDefault()
+          }
+        })
+        
+        // Edit button
+        function Edit() {
+          $(".EditDiv").dialog({
+            modal: true
+          })
+        }
+        function SaveEdit() {
+          $("body").css("background", "url('" + $(".Edit-BG").val() + "')")
+          $("body").css({
+            "background-size": "cover",
+            "background-repeat": "no-repeat",
+            "background-position": "center"
+          })
+          localStorage.setItem("Edit-BG", "url('" + $(".Edit-BG").val() + "')")
+          
+          $(".EditDiv").dialog("close")
+        }
+      </script>
+  </body>
+</html>
