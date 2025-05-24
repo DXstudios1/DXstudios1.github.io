@@ -8,7 +8,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Lilita+One&display=swap" rel="stylesheet" />
-  <!-- END -->
+  <!---->
+  <!-- Full jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <!---->
   <title>Simple notepad</title>
   <style>
     html {
@@ -83,6 +88,9 @@
       font-family: "Lexend";
       margin: 2px;
     }
+    label {
+      margin: 4px !important;
+    }
     .Gold {
       background: linear-gradient(to bottom right, yellow, orange) !important;
     }
@@ -95,39 +103,53 @@
 <body>
   <div class="TopBar">
     <h1>Simple notepad</h1>
-    <button onclick="DarkModeButton(this)">Dark mode (BETA)</button> 
+    <button onclick="DarkModeButton(this)">Dark mode</button> 
   </div>
   <center>
-    <label>Add:</label>
     <button onclick="document.execCommand('insertImage', false, window.prompt('Image address / URL'))">Image</button>
-    <label>|</label>
+    <label></label>
     <button onclick="document.execCommand('insertHTML', false, '<hr>')">Horizontal line</button>
-    <label>|</label>
+    <label></label>
     <button onclick="document.execCommand('insertUnorderedList')">Default list</button>
     <button onclick="document.execCommand('insertOrderedList')">Number list</button>
     <br>
-    <label>Text:</label>
     <button onclick="document.execCommand('fontSize', false, window.prompt('Font size:', '3'))">Size</button>
     <button onclick="document.execCommand('foreColor', false, window.prompt('Color:', 'black'))">Color</button>
-    <label>|</label>
+    <label></label>
     <button onclick="document.execCommand('bold')">Bold</button>
     <button onclick="document.execCommand('italic')">Italic</button>
     <button onclick="document.execCommand('underline')">Underline</button>
-    <label>|</label>
+    <label></label>
     <button onclick="document.execCommand('justifyLeft')">Left</button>
     <button onclick="document.execCommand('justifyCenter')">Center</button>
     <button onclick="document.execCommand('justifyRight')">Right</button>
     <br><br>
     <div id="textarea" contenteditable="true" spellcheck="false"></div>
-    <button title="Copy all text" id="CopyButton" onclick="Copy()">Copy</button>
-    <button title="Cut all text" id="CutButton" onclick="Cut()">Cut</button>
+    <button title="Copy all text" id="CopyButton" onclick="Copy()"><span class="ui-icon ui-icon-clipboard"></span></button>
+    <button title="Cut all text" id="CutButton" onclick="Cut()"><span class="ui-icon ui-icon-scissors"></span></button>
+    <button title="Remove all text" id="ResetButton" onclick="Reset()"><span class="ui-icon ui-icon-trash"></span></button>
     <br>
     <br><hr><br>
-    <p id="Length">Text length: 0</p> <br>
     <label id="ASStatus" style="color: green;">Auto save enabled</label>
-    <a id="DisableASButton" onclick="DisableAutoSave()">(disable)</a>
+    <a id="DisableASButton" onclick="DisableAutoSave()" title="Disable auto save until you reload/leave the page">(disable)</a>
+    <br><br>
+    <a onclick='Dialog("About", "<p>Developer: DX1</p><hr><p>Using: OneCompiler, HTML, CSS, JavaScript, jQuery and Github</p>")'>About</a>
   </center>
   <script>
+    // Settings
+    $(document).tooltip({
+      track: true,
+      show: {
+        delay: 400
+      },
+      position: {
+        my: "left+15 top+25",
+        at: "top left"
+      }
+    })
+    
+    // Code
+    
     const textarea = document.getElementById("textarea");
     const ASStatus = document.getElementById("ASStatus");
 
@@ -135,9 +157,11 @@
     
     let DarkMode = false;
 
-    setTimeout(() => {
+    $(document).ready(function() {
       textarea.innerHTML = localStorage.getItem("Content") || "";
-    }, 200);
+      
+      $("button").button()
+    })
 
     function Copy() {
       const selection = window.getSelection();
@@ -146,10 +170,6 @@
       selection.removeAllRanges();
       selection.addRange(range);
       document.execCommand("copy");
-      document.getElementById("CopyButton").textContent = "✅";
-      setTimeout(() => {
-        document.getElementById("CopyButton").textContent = "Copy";
-      }, 1000);
     }
 
     function Cut() {
@@ -159,16 +179,21 @@
       selection.removeAllRanges();
       selection.addRange(range);
       document.execCommand("cut");
-      document.getElementById("CutButton").textContent = "✅";
-      setTimeout(() => {
-        document.getElementById("CutButton").textContent = "Cut";
-      }, 1000);
+    }
+    
+    function Reset() {
+      const selection = window.getSelection();
+      const range = document.createRange();
+      range.selectNodeContents(textarea);
+      selection.removeAllRanges();
+      selection.addRange(range);
+      document.execCommand("delete");
     }
     
     function DarkModeButton(element) {
       if (DarkMode == true) {
         DarkMode = false
-        element.textContent = "Dark mode (BETA)"
+        element.textContent = "Dark mode"
         document.querySelector("html").style.filter = "invert(0)"
       } else {
         DarkMode = true
@@ -178,12 +203,24 @@
     }
 
     function DisableAutoSave() {
-      if (window.confirm("Are you sure?")) {
-        AutoSaveEnabled = false;
-        ASStatus.textContent = "Auto save disabled";
-        ASStatus.style.color = "red";
-        document.getElementById("DisableASButton").remove();
-      }
+      AutoSaveEnabled = false;
+      ASStatus.textContent = "Auto save disabled";
+      ASStatus.style.color = "red";
+      $("#DisableASButton").remove();
+    }
+    
+    function Dialog(title, content) {
+      let NewDiv = $("<div>")
+      $(NewDiv).prop("title", title)
+      $(NewDiv).html(content)
+      $("body").append(NewDiv)
+      
+      $(NewDiv).dialog({
+        modal: true,
+        show: {
+          animation: "fade"
+        }
+      })
     }
 
     function Loop() {
@@ -191,9 +228,7 @@
         setTimeout(Loop, 300);
         localStorage.setItem("Content", textarea.innerHTML);
       }
-      document.getElementById("Length").textContent = "Text length: " + textarea.innerText.length;
     }
-
     setTimeout(Loop, 1000);
   </script>
 </body>
