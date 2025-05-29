@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Untitled - Simple tierlist</title>
+    <meta charset="UTF-8">
+    <!-- Full jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <!---->
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Jersey+10&family=Lexend:wght@100..900&family=Lilita+One&family=Roboto:ital,wght@0,100..900;1,100..900&family=Special+Gothic+Expanded+One&display=swap');
+      @keyframes removeAnimation {
+        from { transform: scale(0.8) rotate(2.5deg); color: gray; }
+        to { transform: scale(1); color: white; }
+      }
+      *[contenteditable] {
+        cursor: pointer;
+        outline: none;
+      }
+      *[contenteditable]:focus {
+        cursor: text;
+        outline: 1px solid white;
+      }
+      body {
+        background-color: #151515;
+      }
+      h1 {
+        color: white;
+        font-family: "Lexend";
+        cursor: default;
+      }
+      button {
+        font-size: 25px;
+        font-family: "Lexend";
+        cursor: pointer;
+        background-color: black;
+        border: none;
+        color: white;
+        padding: 5px 15px;
+        border-radius: 15px;
+        box-shadow: 0px 0px 0px 1px white;
+        margin: 5px;
+        transition-duration: 0.1s;
+      }
+      button:hover {
+        transform: scale(1.05);
+      }
+      #removeDiv {
+        font-size: 25px;
+        color: white;
+        font-family: "Lexend";
+        outline: 2px dashed white;
+        width: 150px;
+        padding: 10px;
+        cursor: default;
+      }
+      .removeDivAnimation {
+        animation: removeAnimation 0.4s 1;
+      }
+      .tierlist {
+        background-color: black;
+        width: 300px;
+        padding: 5px;
+        border-radius: 15px;
+        box-shadow: 0px 0px 0px 1px white;
+        transition-duration: 0.1s;
+      }
+      .tierlist li {
+        list-style-type: none;
+        color: white;
+        font-family: "Lexend";
+        cursor: grab;
+        font-size: 30px;
+        margin: 10px;
+        transition-duration: 0.1s;
+      }
+      .tierlist li:active {
+        cursor: grabbing;
+      }
+      .tierlist span {
+        margin-left: 7.5px;
+        filter: invert();
+        transform: scale(1.75);
+      }
+    </style>
+  </head>
+  <body>
+      <center>
+        <h1 id="title" contenteditable>Untitled</h1>
+        <ul class="tierlist">
+          <li>Top 1<span class="ui-icon ui-icon-star"></span></li>
+          <li>Top 2<span class="ui-icon ui-icon-comment"></span></li>
+          <li>Top 3<span class="ui-icon ui-icon-trash"></span></li>
+        </ul>
+        <br>
+        <button onclick="Add()">Add</button>
+        <br><br>
+        <div id="removeDiv">Drop here to remove</div>
+      </center>
+      
+      <script>
+        $(document).ready(function() {
+          $(".tierlist").sortable({
+            placeholder: "ui-state-highlight"
+          })
+          
+          $("#removeDiv").droppable({
+            drop: function(event, ui) {
+              ui.draggable.remove()
+              $(this).addClass("removeDivAnimation")
+              setTimeout(() => {$(this).removeClass("removeDivAnimation")}, 500)
+            }
+          })
+        })
+        
+        $("#title").blur(function() {
+          $("title").text($("#title").text() + " - Simple tierlist")
+        })
+        
+        function Add() {
+          let NewItem = $("<li>")
+          $(NewItem).text(window.prompt("Content"))
+          $(".tierlist").append(NewItem)
+          
+          let NewSpan = $("<span>")
+          $(NewSpan).addClass("ui-icon ui-icon-" + window.prompt("--- Some jQuery UI icons:\r- search\r- power\r- alert\r- heart\r- star\r- locked\r\rYou can find more icons at: https://api.jqueryui.com/theming/icons/", "search"))
+          $(NewItem).append(NewSpan)
+        }
+      </script>
+  </body>
+</html>
