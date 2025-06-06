@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Educação digital - Gabriel C e Arthur Awi</title>
+    <meta charset="UTF-8">
+     <!-- Full jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <!---->
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Jersey+10&family=Lexend:wght@100..900&family=Lilita+One&family=Roboto:ital,wght@0,100..900;1,100..900&family=Special+Gothic+Expanded+One&display=swap');
+      .ui-tooltip {
+        filter: invert(0.9);
+        box-shadow: 0px 0px 0px 0px white;
+        opacity: 90%;
+      }
+      body {
+        background: #151515;
+      }
+      @keyframes centerDivDialogAnim {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      #centerDiv {
+        position: fixed;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%; height: 90%;
+        background: #202020;
+        border-radius: 20px;
+        padding: 25px;
+        overflow-y: auto;
+      }
+      #centerDiv-dialog {
+        width: 100%;
+      }
+      #centerDiv-dialog p {
+        background-color: #303030;
+        color: white;
+        font-size: 30px;
+        font-family: "Lexend";
+        padding: 10px;
+        outline: none;
+        margin: 7.5px;
+        animation: 0.5s centerDivDialogAnim 1;
+        border-radius: 10px;
+        user-select: none;
+      }
+      #centerDiv-buttons {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 7.5px;
+      }
+      #centerDiv-buttons button {
+        font-size: 25px;
+        font-family: "Lexend";
+        background-color: #303030;
+        color: white;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 100px;
+        border: none;
+        transition-duration: 0.25s;
+      }
+      #centerDiv-buttons button:active {
+        transition-duration: 0s;
+        transform: scale(1.25) rotate(5deg);
+        filter: brightness(1.5);
+      }
+      #centerDiv-buttons button:disabled {
+        display: none;
+      }
+      #centerDiv-buttons button:focus {
+        outline: gray solid 1px;
+      }
+      #resultsDiv {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+      <div id="centerDiv">
+        <div id="centerDiv-dialog">
+          <p>Olá! Essa é uma simulação de conversa com uma inteligência artificial, estou aqui para coletar dados e desenvolver um relatório que ensine tudo o que você não sabe sobre inteligências artificiais de uma forma simplificada. Você sabe a definição de uma intelgiência artificial?</p>
+        </div>
+        
+        <br>
+        <div id="centerDiv-buttons">
+          <button onclick="button1()" id="button1">Sim</button>
+          <button onclick="button2()" id="button2">Não</button>
+          <button title="Vizualizar relatório" onclick="results()" id="resultsButton" disabled>Relatório</button>
+        </div>
+      </div>
+      
+      <div id="resultsDiv">
+        <h3 id="resultsDiv-AI1">O que é uma inteligência artificial?</h3>
+        <div id="resultsDiv-AI2">
+          <p>A inteligência artificial (IA) é uma área da ciência da computação que tem como objetivo criar sitemas capazes de realizarem tarefas que normalmente iriam precisar de intelgiência humana. Como: raciocínio, percepção, tomada de decisões e compreensão de linguagens.</p>
+        </div>
+        
+        <h3 id="resultsDiv-prompt1">O que é um prompt?</h3>
+        <div id="resultsDiv-prompt2">
+          <p>Um prompt é uma instrução, pergunta ou comando que você conecede a um sistema, como a inteligência artificial. Os prompts podem ser utilizados para obtenção de respostas ou para executar uma ação.</p>
+        </div>
+        
+        <h3 id="resultsDiv-goodPrompt1">Como escrever bons prompts</h3>
+        <div id="resultsDiv-goodPrompt2">
+          <p>Para realizar um bom prompt é necessário diversos aspectos:</p>
+          <ol>
+            <li><strong>Ser claro e específico:</strong> quanto mais detalhes, melhor será a resposta.</li>
+            <li><strong>Definir o formato da resposta:</strong> descreva para a IA o formato da resposta que você deseja. Você quer uma resposta em tópicos? Um e-mail formal? Um documento?</li>
+            <li><strong>Dê contexto:</strong> caso a IA precise entender um cenário específico, foneça informações relevantes.</li>
+          </ol>
+        </div>
+        
+        <h3 id="resultsDiv-dontTrustAI1">CUIDADO: não confie completamente em inteligências artificiais</h3>
+        <div id="resultsDiv-dontTrustAI2">
+          <p>Tome cuidado! De acordo com suas respostas, você confia nas inteligências artificiais, porém elas são um recurso que ainda estão em desenvolvimento e podem conter erros. Aqui está uma lista de possibilidades:</p>
+          <ol>
+            <li><strong>Possibilidade de erros e desinformação:</strong> a IA pode gerar respostas incorretas, desatualizadas ou até mesmo inventadas. Elas não tem uma compreensão real do mundo.</li>
+            <li><strong>Pensamento humano:</strong> a IA não tem a capacidade de pensar como nós, ela apenas segue padrões sem entender o impacto das respostas.</li>
+            <li><strong>Privacidade e segurança:</strong> algumas IAs podem coletar informações pessoais sem que você perceba.</li>
+          </ol>
+          <p>Ainda assim, a inteligência artificial é muito boa, mas deve ser utilizada com cautela.</p>
+          <p style="width: 65px; cursor: help;" title="Sempre verifique as informações, questione respostas e complemente com conhecimento humano.">Dicas (?)</p>
+        </div>
+      </div>
+      
+      <script>
+        // jquery
+        $(document).ready(function() {
+          $("#resultsDiv").accordion({
+            active: false,
+            collapsible: true,
+            heightStyle: "content"
+          })
+          $(document).tooltip({
+            track: true,
+            position: {
+              my: "left+15 top+25",
+              at: "top left"
+            },
+            show: {
+              effect: "none"
+            },
+            hide: {
+              effect: "none"
+            }
+          })
+        })
+        
+        let currentQuestion = 1
+        
+        let buttonsResult = []
+        
+        let button1Answers = [
+        "Que bom! Você gostaria de saber o que é um prompt?",
+        "Anotado! Você gostaria de aprender como escrever bons prompts? Um prompt bem escrito ajuda a IA a entender exatamente o que você quer, além de fornecer uma maior profundidade nas respostas.",
+        "Agora uma pergunta importante, você confia completamente nas inteligências artificiais?",
+        "Hum... Isso não é tão bom quanto parece. Eu adicionei várias coisas importantes e úteis no seu relatório, espero que te ajude!"
+        ]
+        
+        let button2Answers = [
+        "Tudo bem, é pra isso que estou aqui! De qualquer forma, você gostaria de saber o que é um prompt?",
+        "Então você gostaria de aprender como escrever bons prompts? Um prompt bem escrito ajuda a IA a entender exatamente o que você quer, além de fornecer uma maior profundidade nas respostas.",
+        "Agora uma pergunta importante, você confia completamente nas inteligências artificiais?",
+        "Ainda bem! Eu adicionei várias coisas importantes e úteis no seu relatório, espero que te ajude!"
+        ]
+        
+        function button1() {
+          addDialog(button1Answers[currentQuestion - 1])
+          buttonsResult[currentQuestion - 1] = true
+          currentQuestion += 1
+          optionsButtonPressed()
+        }
+        function button2() {
+          addDialog(button2Answers[currentQuestion - 1])
+          buttonsResult[currentQuestion - 1] = false
+          currentQuestion += 1
+          optionsButtonPressed()
+        }
+        
+        function optionsButtonPressed() {
+          if (currentQuestion == 5) {
+            $("#button1").remove()
+            $("#button2").remove()
+            $("#resultsButton").prop("disabled", false)
+            $("#resultsButton").focus()
+          }
+        }
+        
+        function results() {
+          $("#centerDiv").css("display", "none")
+          $("#resultsDiv").css("display", "block")
+          
+          if (buttonsResult[0]) {
+            $("#resultsDiv-AI1").remove()
+            $("#resultsDiv-AI2").remove()
+          }
+          if (!buttonsResult[1]) {
+            $("#resultsDiv-prompt1").remove()
+            $("#resultsDiv-prompt2").remove()
+          }
+          if (!buttonsResult[2]) {
+            $("#resultsDiv-goodPrompt1").remove()
+            $("#resultsDiv-goodPrompt2").remove()
+          }
+          if (!buttonsResult[3]) {
+            $("#resultsDiv-dontTrustAI1").remove()
+            $("#resultsDiv-donttrustAI2").remove()
+          }
+        }
+        
+        function addDialog(content) {
+          let newDialog = $("<p>" + content + "</p>")
+          $("#centerDiv-dialog").append(newDialog)
+          $("#centerDiv").scrollTop(100 * 100)
+        }
+      </script>
+  </body>
+</html>
